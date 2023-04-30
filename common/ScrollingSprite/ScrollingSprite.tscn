@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmb46tsa4evjm"]
-
-[ext_resource type="Script" path="res://common/ScrollingSprite/ScrollingSprite.gd" id="1_jaypd"]
-
-[node name="ScrollingSprite" type="Sprite2D"]
-script = ExtResource("1_jaypd")

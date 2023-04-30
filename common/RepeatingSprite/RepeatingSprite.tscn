@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmi7erchnujgm"]
-
-[ext_resource type="Script" path="res://common/RepeatingSprite/RepeatingSprite.gd" id="1_rb2lc"]
-
-[node name="RepeatingSprite" type="Sprite2D"]
-script = ExtResource("1_rb2lc")

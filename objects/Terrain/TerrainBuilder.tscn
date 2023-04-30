@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd64plh8nk4up"]
-
-[ext_resource type="Script" path="res://objects/Terrain/TerrainBuilder.gd" id="1_cr0sf"]
-
-[node name="TerrainBuilder" type="Path2D"]
-script = ExtResource("1_cr0sf")
