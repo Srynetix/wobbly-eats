@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm3bs5nsh30fk"]
+
+[ext_resource type="Texture2D" uid="uid://bnkdvehky4qqh" path="res://objects/Motorcycle/Wheel.png" id="1_aivvv"]
+[ext_resource type="Script" path="res://objects/Motorcycle/Wheel.gd" id="1_xpra5"]
+[ext_resource type="PackedScene" uid="uid://djttst6jtmvpt" path="res://common/Trail/Trail.tscn" id="3_etol3"]
+
+[sub_resource type="Curve" id="Curve_6gj3s"]
+_data = [Vector2(0, 1), 0.0, 0.0691662, 0, 0, Vector2(1, 0.745763), -0.767387, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_30mnd"]
+offsets = PackedFloat32Array(0, 0.858896, 0.981595)
+colors = PackedColorArray(1, 1, 1, 0, 0.917969, 0.373099, 0, 1, 0.0862745, 0.145098, 0.533333, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ocqma"]
+radius = 42.0
+
+[node name="Wheel" type="RigidBody2D"]
+gravity_scale = 2.0
+script = ExtResource("1_xpra5")
+metadata/_edit_group_ = true
+
+[node name="TrailPosition" type="Marker2D" parent="."]
+
+[node name="Trail" parent="TrailPosition" instance=ExtResource("3_etol3")]
+width = 50.0
+width_curve = SubResource("Curve_6gj3s")
+gradient = SubResource("Gradient_30mnd")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_aivvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ocqma")

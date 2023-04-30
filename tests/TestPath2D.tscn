@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cspij5tjlv1nx"]
+
+[ext_resource type="Script" path="res://tests/TestPath2D.gd" id="1_ib4s1"]
+
+[sub_resource type="Curve2D" id="Curve2D_q35b8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 32, 72, 0, 0, 0, 0, 88, 32, 0, 0, 0, 0, 144, 56, 0, 0, 0, 0, 304, 40, 0, 0, 0, 0, 392, 88, 0, 0, 0, 0, 544, 40, 0, 0, 0, 0, 600, 88, 0, 0, 0, 0, 608, 152, 0, 0, 0, 0, 240.035, 95.7059, 0, 0, 0, 0, 32, 72)
+}
+point_count = 10
+
+[node name="TestPath2D" type="Node2D"]
+script = ExtResource("1_ib4s1")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(176, 144)
+curve = SubResource("Curve2D_q35b8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]

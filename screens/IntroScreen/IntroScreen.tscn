@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://d20cvxkuds4ya"]
+
+[ext_resource type="Texture2D" uid="uid://cg3duaj12mfrb" path="res://objects/Background/Sky.png" id="1_j6wqj"]
+[ext_resource type="RichTextEffect" uid="uid://be56xcpwt6w8u" path="res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextEffect.tres" id="1_k8inm"]
+[ext_resource type="FontFile" uid="uid://b3w673kt7hxqg" path="res://thirdparty/fonts/VTF MisterPixel/Mister Pixel Regular.otf" id="1_lm8xg"]
+[ext_resource type="Script" path="res://screens/IntroScreen/IntroScreen.gd" id="1_mx1o0"]
+[ext_resource type="Script" path="res://addons/sxgd/nodes/ui/SxFadingRichTextLabel/SxFadingRichTextLabel.gd" id="2_2yjle"]
+[ext_resource type="AudioStream" uid="uid://dk1wldc6leebi" path="res://screens/GameScreen/Music.ogg" id="6_cwlvl"]
+
+[sub_resource type="Gradient" id="Gradient_nm4eb"]
+offsets = PackedFloat32Array(0, 0.522581, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dpd8r"]
+gradient = SubResource("Gradient_nm4eb")
+fill_from = Vector2(0.513761, 0)
+fill_to = Vector2(0.504587, 1)
+
+[node name="IntroScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mx1o0")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j6wqj")
+
+[node name="Gradient" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_dpd8r")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_lm8xg")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Hey, you! We need you!
+We need you to [rainbow]deliver[/rainbow] delicious meals to people.
+
+
+But it's not a simple task, working for [wave freq=8 amp=25]Wobbly Eats[/wave].
+Roads don't exist where you are going, it's sand everywhere.
+
+
+Be grateful, you will have a spectacular view of the sea, and customers will be pleased to have you finally bring them what they always wanted, ...
+
+
+... food from the comfort of their home!
+
+
+So prepare yourself for a wild ride, and [wave freq=8 amp=25]go as fast as you can![/wave]"
+scroll_active = false
+custom_effects = [ExtResource("1_k8inm")]
+script = ExtResource("2_2yjle")
+autoplay = true
+char_delay = 0.05
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SkipLabel" type="Label" parent="MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_lm8xg")
+theme_override_font_sizes/font_size = 18
+text = "Touch screen or press Enter to skip"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cwlvl")
+volume_db = -30.0
+pitch_scale = 0.5
+autoplay = true

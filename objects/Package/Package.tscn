@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbj50y32yt5kx"]
+
+[ext_resource type="Texture2D" uid="uid://dihl53olnniqk" path="res://objects/Package/Package.png" id="1_0fsrp"]
+[ext_resource type="Script" path="res://objects/Package/Package.gd" id="1_6r4rh"]
+[ext_resource type="PackedScene" uid="uid://djttst6jtmvpt" path="res://common/Trail/Trail.tscn" id="2_p8aom"]
+[ext_resource type="FontFile" uid="uid://b3w673kt7hxqg" path="res://thirdparty/fonts/VTF MisterPixel/Mister Pixel Regular.otf" id="4_4oaa7"]
+[ext_resource type="AudioStream" uid="uid://txo0re1el47c" path="res://objects/Package/Hit.ogg" id="5_r5y2q"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_eyjsk"]
+bounce = 0.05
+
+[sub_resource type="Curve" id="Curve_4j70m"]
+_data = [Vector2(0, 0.228814), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_x52ji"]
+colors = PackedColorArray(1, 1, 1, 0, 0.839844, 0.625514, 0.425445, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1x7li"]
+radius = 27.0
+height = 69.0
+
+[node name="Package" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 15
+mass = 0.05
+physics_material_override = SubResource("PhysicsMaterial_eyjsk")
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_6r4rh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+limit_left = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+metadata/_edit_lock_ = true
+
+[node name="Trail" parent="." instance=ExtResource("2_p8aom")]
+width = 25.0
+width_curve = SubResource("Curve_4j70m")
+gradient = SubResource("Gradient_x52ji")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+length = 25
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0fsrp")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1x7li")
+metadata/_edit_lock_ = true
+
+[node name="FoodType" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -16.0
+offset_right = 28.0
+offset_bottom = 7.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_4oaa7")
+theme_override_font_sizes/font_size = 16
+text = "Kebab"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoodPhrase" type="Label" parent="."]
+offset_left = -28.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 26.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("4_4oaa7")
+theme_override_font_sizes/font_size = 12
+text = "Hmmm!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_r5y2q")
+volume_db = -10.0

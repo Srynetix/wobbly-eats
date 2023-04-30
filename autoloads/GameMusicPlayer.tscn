@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgt7upd6vuu25"]
+
+[ext_resource type="Script" path="res://autoloads/GameMusicPlayer.gd" id="1_ijcoj"]
+[ext_resource type="AudioStream" uid="uid://dk1wldc6leebi" path="res://screens/GameScreen/Music.ogg" id="2_rqqt8"]
+
+[node name="GameMusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("2_rqqt8")
+volume_db = -22.18
+bus = &"Music"
+script = ExtResource("1_ijcoj")
