@@ -33,17 +33,17 @@ func get_level_count() -> int:
 
 func _merge_best_times(level_id: String, best_times: Array) -> Array:
     var new_best_times = Array()
-    var player_time = player_scores.get(level_id)
-    if player_time:
-        var inserted := false
-        for time in best_times:
-            var what = time[1]
-            if !inserted && float(player_time) < float(what):
-                new_best_times.push_back(["YOU", player_time])
-                new_best_times.push_back(time)
-                inserted = true
-            else:
-                new_best_times.push_back(time)
+    var player_time = player_scores.get(level_id, 9999)
+
+    var inserted := false
+    for time in best_times:
+        var what = time[1]
+        if !inserted && float(player_time) < float(what):
+            new_best_times.push_back(["YOU", player_time])
+            new_best_times.push_back(time)
+            inserted = true
+        else:
+            new_best_times.push_back(time)
 
     if len(new_best_times) == 4:
         new_best_times.pop_back()

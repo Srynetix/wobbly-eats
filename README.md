@@ -37,7 +37,7 @@ _Good luck, and have fun! (I did have fun making and playing this game!)_
 
 ## Preview
 
-![preview](./promo/promo.gif)
+![preview](./docs/animation.gif)
 
 [Type-Eat]: https://github.com/Srynetix/type-eat/
 [Godot Engine 4.0.2]: https://godotengine.org/
