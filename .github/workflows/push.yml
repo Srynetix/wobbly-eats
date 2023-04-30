@@ -1,0 +1,28 @@
+name: Push builds
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-web:
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    with:
+      platform: Web
+      name: wobbly-eats
+      output_name: index.html
+
+  build-android-debug:
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    with:
+      platform: Android
+      name: wobbly-eats
+      output_name: Wobbly-Eats.apk
+
+  build-windows:
+    uses: Srynetix/godot-github-workflows/.github/workflows/build-game-4.0.2.yml@main
+    with:
+      platform: Windows
+      name: wobbly-eats
+      output_name: Wobbly-Eats.exe
